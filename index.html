@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌟 Fitness Toolkit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ================================
+       LOGIN PAGE
+  =================================-->
+  <section id="loginPage" class="fade-slide-enter fade-slide-enter-active" aria-label="Login">
+    <header class="navbar" role="banner">
+      <span class="brand">Fitness Toolkit — Sign In</span>
+    </header>
+
+    <div class="login-hero">
+      <div class="login-card pretty" role="form" aria-labelledby="loginTitle">
+        <div class="login-head">
+          <div class="login-icon" aria-hidden="true">🧑‍💻</div>
+          <div>
+            <h1 id="loginTitle" class="login-title">Welcome back</h1>
+            <p class="login-subtitle">Sign in to continue to your fitness dashboard</p>
+          </div>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <fieldset>
+            <legend>Personal Info</legend>
+
+            <label for="fname">First name</label>
+            <input id="fname" name="fname" placeholder="Aryan" required autocomplete="given-name" /><br>
+
+            <label for="lname">Last name</label>
+            <input id="lname" name="lname" placeholder="Sharma" required autocomplete="family-name" /><br>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" /><br>
+
+            <p class="inline-label">Gender</p>
+            <div class="radio-row" role="radiogroup" aria-label="Gender">
+              <label><input id="male"   name="gender" type="radio" value="male"   required /> Male</label>
+              <label><input id="female" name="gender" type="radio" value="female"          /> Female</label>
+              <label><input id="other"  name="gender" type="radio" value="other"           /> Other</label>
+            </div>
+
+            <label for="psw">Password</label>
+            <div class="password-row">
+              <input id="psw" name="psw" type="password" placeholder="Enter your password" required autocomplete="current-password" />
+              <button type="button" class="ghost" id="togglePwd" aria-pressed="false" aria-controls="psw">Show</button>
+            </div>
+
+            <div class="helper-row">
+              <label class="remember"><input id="remember" name="remember" type="checkbox" /> Remember me</label>
+            </div>
+
+            <input type="submit" value="Sign In" aria-label="Sign in" />
+          </fieldset>
+        </form>
+
+        <p class="small-muted">By continuing, you agree to our Terms & Privacy Policy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================
+       APP PAGE
+  =================================-->
+  <main id="appPage" class="is-hidden fade-slide-enter" aria-label="Fitness Toolkit">
+    <div class="mode-toggle" role="group" aria-label="Display & Unit Controls">
+      <button id="themeToggle" type="button">🌙 Dark Mode</button>
+      <button id="unitToggle"  type="button">Switch to ft/lbs</button>
+    </div>
+
+    <section class="card" aria-labelledby="toolkitTitle">
+      <h1 id="toolkitTitle">Fitness Toolkit</h1>
+
+      <!-- Calculator selector -->
+      <label for="calcType">Choose what to calculate:</label>
+      <select id="calcType" aria-label="Calculator type">
+        <option value="bmi">BMI</option>
+        <option value="bmr">BMR (Mifflin–St Jeor)</option>
+        <option value="tdee">Daily Calories (TDEE)</option>
+        <option value="water">Daily Water Intake</option>
+        <option value="whr">Waist–Hip Ratio (WHR)</option>
+      </select>
+
+      <!-- BMI -->
+      <form id="form-bmi" class="calc-form" aria-label="BMI Calculator">
+        <label for="height-bmi">Height (cm)</label>
+        <input id="height-bmi" type="number" placeholder="Enter height" min="0" step="any" required />
+        <label for="weight-bmi">Weight (kg)</label>
+        <input id="weight-bmi" type="number" placeholder="Enter weight" min="0" step="any" required />
+        <div class="buttons">
+          <button type="submit">Calculate</button>
+          <button type="button" class="resetBtn">Reset</button>
+        </div>
+      </form>
+
+      <!-- BMR -->
+      <form id="form-bmr" class="calc-form hidden" aria-label="BMR Calculator">
+        <div class="row">
+          <div>
+            <label for="age-bmr">Age (years)</label>
+            <input id="age-bmr" type="number" min="0" step="1" required />
+          </div>
+          <div>
+            <label for="gender-bmr">Gender</label>
+            <select id="gender-bmr">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <label for="height-bmr">Height (cm)</label>
+        <input id="height-bmr" type="number" min="0" step="any" required />
+        <label for="weight-bmr">Weight (kg)</label>
+        <input id="weight-bmr" type="number" min="0" step="any" required />
+        <div class="buttons">
+          <button type="submit">Calculate</button>
+          <button type="button" class="resetBtn">Reset</button>
+        </div>
+      </form>
+
+      <!-- TDEE -->
+      <form id="form-tdee" class="calc-form hidden" aria-label="TDEE Calculator">
+        <div class="row">
+          <div>
+            <label for="age-tdee">Age (years)</label>
+            <input id="age-tdee" type="number" min="0" step="1" required />
+          </div>
+          <div>
+            <label for="gender-tdee">Gender</label>
+            <select id="gender-tdee">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+        <label for="height-tdee">Height (cm)</label>
+        <input id="height-tdee" type="number" min="0" step="any" required />
+        <label for="weight-tdee">Weight (kg)</label>
+        <input id="weight-tdee" type="number" min="0" step="any" required />
+        <label for="activity-tdee">Activity Level</label>
+        <select id="activity-tdee">
+          <option value="1.2">Sedentary (little/no exercise)</option>
+          <option value="1.375">Light (1–3 days/week)</option>
+          <option value="1.55">Moderate (3–5 days/week)</option>
+          <option value="1.725">Very active (6–7 days/week)</option>
+          <option value="1.9">Extra active (physical job + training)</option>
+        </select>
+        <div class="buttons">
+          <button type="submit">Calculate</button>
+          <button type="button" class="resetBtn">Reset</button>
+        </div>
+      </form>
+
+      <!-- Water -->
+      <form id="form-water" class="calc-form hidden" aria-label="Water Intake Calculator">
+        <label for="weight-water">Weight (kg)</label>
+        <input id="weight-water" type="number" min="0" step="any" required />
+        <div class="buttons">
+          <button type="submit">Calculate</button>
+          <button type="button" class="resetBtn">Reset</button>
+        </div>
+        <p class="note">Rule of thumb: ~35 ml/kg/day. Adjust for climate & activity.</p>
+      </form>
+
+      <!-- WHR -->
+      <form id="form-whr" class="calc-form hidden" aria-label="Waist–Hip Ratio Calculator">
+        <label for="waist-whr">Waist (cm)</label>
+        <input id="waist-whr" type="number" min="0" step="any" required />
+        <label for="hip-whr">Hip (cm)</label>
+        <input id="hip-whr" type="number" min="0" step="any" required />
+        <div class="buttons">
+          <button type="submit">Calculate</button>
+          <button type="button" class="resetBtn">Reset</button>
+        </div>
+      </form>
+
+      <div id="result" role="status" aria-live="polite"></div>
+      <div id="advice"></div>
+    </section>
+
+    <!-- BMI chart -->
+    <aside class="chart" id="bmiChart" aria-label="BMI Reference Chart">
+      <h2 style="margin:0 0 8px;">BMI Reference Chart</h2>
+      <ul>
+        <li><span class="underweight">Underweight:</span> BMI &lt; 18.5</li>
+        <li><span class="normal">Normal:</span> 18.5 – 24.9</li>
+        <li><span class="overweight">Overweight:</span> 25 – 29.9</li>
+        <li><span class="obese">Obese:</span> 30+</li>
+      </ul>
+    </aside>
+
+    <p class="note" aria-label="Disclaimer">These are general estimates—not medical advice.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
